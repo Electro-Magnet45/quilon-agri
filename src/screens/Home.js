@@ -11,13 +11,31 @@ const Home = () => {
       ".homeItem > div:not(.opacityAnime)"
     );
     if (elements.length) {
+      if (elements[0].classList.contains("opacityAnime")) return;
       elements[0].classList.add("opacityAnime");
       timeout = setTimeout(animateNext, 200);
     } else clearTimeout(timeout);
   };
 
-  useTitle("Home | Quilon Agri Products");
-  useEffect(() => animateNext(), []);
+  useTitle("Home");
+  useEffect(() => {
+    const element = document.querySelector(".homeItem_container");
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) animateNext();
+      else {
+        if (
+          /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+            navigator.userAgent
+          )
+        )
+          return;
+        const elements = document.querySelectorAll(".homeItem_container");
+        elements.forEach((i) => i.classList.remove("opacityAnime"));
+      }
+    });
+
+    observer.observe(element);
+  }, []);
 
   return (
     <div className="home">

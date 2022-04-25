@@ -40,6 +40,7 @@
   padding: 1rem 2rem;
   border: none;
   border-radius: 1rem;
+  margin-top: 2rem;
   margin-right: 1rem;
   font-size: 1rem;
   font-weight: bold;
@@ -96,16 +97,25 @@
 }
 
 @media only screen and (max-width: 600px) {
-  .home-land_1 img {
-    visibility: hidden;
-  }
-  .home-land_2 {
-    flex-direction: column;
-  }
-  .home-land_2 button {
-    margin-top: 1rem;
+  .home_landing {
+    padding: 5rem;
   }
   .home_items {
     margin-top: 0;
+  }
+}
+@media only screen and (max-width: 700px) {
+  .home-land_1 img {
+    display: none;
+  }
+  .home_landing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media only screen and (max-width: 900px) {
+  .home_landing {
+    padding: 5rem 2rem;
   }
 }
