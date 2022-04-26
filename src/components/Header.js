@@ -1,7 +1,7 @@
 import React from "react";
 import "./Header.css";
 import { useLocation, Link } from "react-router-dom";
-import cart_icon from "../cart.svg";
+import cart_icon from "../assets/cart.svg";
 
 const Header = () => {
   const pathName = useLocation().pathname;

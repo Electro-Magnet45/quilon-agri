@@ -50,18 +50,15 @@
   transition: all 1s ease;
   animation: buttonAnime 1s 0.5s ease forwards;
 }
-.home-land_2 button:nth-child(2) {
-  animation-delay: 1.5s;
-}
 .home-land_2 button:hover {
   color: white;
   background-color: red;
 }
-
 .home-land_2 button:last-child {
   color: var(--primary-color);
   background-color: white;
   box-shadow: 0px 4px 16px -10px var(--primary-color);
+  animation-delay: 1.5s;
 }
 .home-land_2 button:last-child:hover {
   background-color: white;

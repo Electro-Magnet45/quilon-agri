@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import "./Home.css";
-import home_icon from "../undraw_breakfast.svg";
+import home_icon from "../assets/undraw_breakfast.svg";
 import HomeItem from "../components/HomeItem";
 import { items, useTitle } from "../constants";
 
-const Home = () => {
+const Home = ({ setPopUp }) => {
   var timeout;
   const animateNext = () => {
     const elements = document.querySelectorAll(
@@ -60,7 +60,12 @@ const Home = () => {
         </div>
         <div className="home_items">
           {items.map((i) => (
-            <HomeItem key={i.id} item={i} data-animation-offset={i.id} />
+            <HomeItem
+              key={i.id}
+              item={i}
+              setPopUp={setPopUp}
+              data-animation-offset={i.id}
+            />
           ))}
         </div>
       </div>

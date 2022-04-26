@@ -1,0 +1,47 @@
+#popUp {
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 50;
+  animation: background_anime 0.5s ease forwards;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.popUp_container {
+  background-color: white;
+  width: 60vw;
+  border-radius: 4rem;
+  padding: 2rem;
+  display: flex;
+  animation: slideUp_anime 0.5s ease;
+}
+.popUp_container img {
+  height: 18rem;
+}
+
+@keyframes background_anime {
+  from {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  to {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+}
+@keyframes slideUp_anime {
+  from {
+    transform: translateY(20rem);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .popUp_container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}

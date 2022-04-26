@@ -1,10 +1,13 @@
 import React from "react";
 import "./HomeItem.css";
 
-const HomeItem = ({ item }) => {
+const HomeItem = ({ item, setPopUp }) => {
   return (
     <div className="homeItem">
-      <div className="homeItem_container">
+      <div
+        className="homeItem_container"
+        onClick={() => setPopUp({ visible: true, item: item })}
+      >
         <div className="home-item_img">
           <div className="item_img_container">
             <img className="item_img_foreground" src={item.img} alt="" />
