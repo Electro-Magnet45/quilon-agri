@@ -10,7 +10,7 @@ const Header = () => {
       <div className="header_container">
         <Link to="/">
           <img
-            src="https://quilonagriproducts.com/wp-content/uploads/2019/12/cropped-WhatsApp-Image-2019-12-07-at-8.20.54-PM-1.jpeg"
+            src="https://i.ibb.co/FWVXPRz/cropped-Whats-App-Image-2019-12-07-at-8-20-54-PM-1.jpg"
             alt=""
           />
         </Link>
@@ -27,9 +27,9 @@ const Header = () => {
             </div>
           </Link>
         </div>
-        <div className="header_cart">
+        <div className="header_cart hidden">
           <img src={cart_icon} alt="" />
-          <div className="header-cart_notify hidden">1</div>
+          <div className="header-cart_notify">1</div>
         </div>
       </div>
     </div>

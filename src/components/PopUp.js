@@ -25,7 +25,15 @@ const PopUp = ({ popUp, setPopUp }) => {
     <div id="popUp">
       <div className="popUp_container" id="popUp_container">
         <img src={popUp.item.img} alt="" />
-        <div style={{ fontSize: 24 }}>{popUp.item.fullName}</div>
+        <div className="popUp-cont_info">
+          <div style={{ fontSize: 24 }}>{popUp.item.fullName}</div>
+          <div style={{ fontSize: 20, marginTop: 20 }}>
+            200gms: <span>{`₹${popUp.item.price["200gms"]}`}</span>
+          </div>
+          <div style={{ fontSize: 20, marginTop: 5 }}>
+            500gms: <span>{`₹${popUp.item.price["500gms"]}`}</span>
+          </div>
+        </div>
       </div>
     </div>
   );

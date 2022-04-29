@@ -12,13 +12,18 @@
 .popUp_container {
   background-color: white;
   width: 60vw;
-  border-radius: 4rem;
+  border-radius: 2rem;
   padding: 2rem;
   display: flex;
   animation: slideUp_anime 0.5s ease;
+  user-select: text;
 }
 .popUp_container img {
   height: 18rem;
+}
+
+.popUp-cont_info span {
+  color: red;
 }
 
 @keyframes background_anime {
@@ -43,5 +48,11 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
+  }
+}
+
+@media only screen and(max-width: 600px) {
+  .popUp_container {
+    width: 60vw;
   }
 }

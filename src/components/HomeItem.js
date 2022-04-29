@@ -16,7 +16,9 @@ const HomeItem = ({ item, setPopUp }) => {
         </div>
         <div className="home-item_details">
           <div style={{ fontSize: 18, fontWeight: 500 }}>{item.name}</div>
-          <div className="item-details_cart"></div>
+          <div style={{ fontSize: 14, fontWeight: 500, marginTop: 10 }}>
+            {"₹" + item.price["200gms"]}
+          </div>
         </div>
       </div>
     </div>
