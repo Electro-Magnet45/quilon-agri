@@ -3,8 +3,10 @@ import "./Home.css";
 import home_icon from "../assets/undraw_breakfast.svg";
 import HomeItem from "../components/HomeItem";
 import { items, useTitle } from "../constants";
+import { useNavigate } from "react-router-dom";
 
 const Home = ({ setPopUp }) => {
+  const navigate = useNavigate();
   var timeout;
   const animateNext = () => {
     const elements = document.querySelectorAll(
@@ -54,8 +56,16 @@ const Home = ({ setPopUp }) => {
             <img src={home_icon} alt="" />
           </div>
           <div className="home-land_2">
-            <button>Order Now</button>
-            <button>Contact Us</button>
+            <button
+              onClick={() =>
+                document.querySelector(".home_items").scrollIntoView({
+                  behavior: "smooth",
+                })
+              }
+            >
+              Catalogue
+            </button>
+            <button onClick={() => navigate("/contact")}>Contact Us</button>
           </div>
         </div>
         <div className="home_items">

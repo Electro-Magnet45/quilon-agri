@@ -1,12 +1,12 @@
 import "./App.css";
 import { Routes, Route, Link } from "react-router-dom";
 import { useTitle } from "./constants";
+import { useState } from "react";
 import error_icon from "./assets/undraw_page_not_found.svg";
 import Header from "./components/Header";
 import Home from "./screens/Home";
 import About from "./screens/About";
 import Contact from "./screens/Contact";
-import { useState } from "react";
 import PopUp from "./components/PopUp";
 
 function App() {
