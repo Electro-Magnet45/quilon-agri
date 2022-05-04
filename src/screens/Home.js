@@ -2,12 +2,13 @@ import React, { useEffect } from "react";
 import "./Home.css";
 import home_icon from "../assets/undraw_breakfast.svg";
 import HomeItem from "../components/HomeItem";
-import { items, useTitle } from "../constants";
+import { useTitle } from "../constants";
 import { useNavigate } from "react-router-dom";
 
-const Home = ({ setPopUp }) => {
+const Home = ({ items, setPopUp }) => {
   const navigate = useNavigate();
   var timeout;
+
   const animateNext = () => {
     const elements = document.querySelectorAll(
       ".homeItem > div:not(.opacityAnime)"
@@ -22,6 +23,7 @@ const Home = ({ setPopUp }) => {
   useTitle("Home");
   useEffect(() => {
     const element = document.querySelector(".homeItem_container");
+    if (!element) return;
     const observer = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) animateNext();
       else {
@@ -37,7 +39,7 @@ const Home = ({ setPopUp }) => {
     });
 
     observer.observe(element);
-  }, []);
+  }, [items]);
 
   return (
     <div className="home">
@@ -69,14 +71,15 @@ const Home = ({ setPopUp }) => {
           </div>
         </div>
         <div className="home_items">
-          {items.map((i) => (
-            <HomeItem
-              key={i.id}
-              item={i}
-              setPopUp={setPopUp}
-              data-animation-offset={i.id}
-            />
-          ))}
+          {items &&
+            items.map((i) => (
+              <HomeItem
+                key={i.id}
+                item={i}
+                setPopUp={setPopUp}
+                data-animation-offset={i.id}
+              />
+            ))}
         </div>
       </div>
     </div>

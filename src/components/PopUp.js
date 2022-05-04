@@ -28,10 +28,10 @@ const PopUp = ({ popUp, setPopUp }) => {
         <div className="popUp-cont_info">
           <div style={{ fontSize: 24 }}>{popUp.item.fullName}</div>
           <div style={{ fontSize: 20, marginTop: 20 }}>
-            200gms: <span>{`₹${popUp.item.price["200gms"]}`}</span>
+            200gms: <span>{`₹${popUp.item.gms200}`}</span>
           </div>
           <div style={{ fontSize: 20, marginTop: 5 }}>
-            500gms: <span>{`₹${popUp.item.price["500gms"]}`}</span>
+            500gms: <span>{`₹${popUp.item.gms500}`}</span>
           </div>
         </div>
       </div>
