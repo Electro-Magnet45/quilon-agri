@@ -17,7 +17,7 @@ const HomeItem = ({ item, setPopUp }) => {
         <div className="home-item_details">
           <div style={{ fontSize: 18, fontWeight: 500 }}>{item.name}</div>
           <div style={{ fontSize: 14, fontWeight: 500, marginTop: 10 }}>
-            {"₹" + item.gms200}
+            {"₹ " + item.gms200}
           </div>
         </div>
       </div>
