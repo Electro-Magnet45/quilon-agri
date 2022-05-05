@@ -30,7 +30,7 @@ const Contact = () => {
                 <span
                   onClick={() =>
                     window.open(
-                      "https://api.whatsapp.com/send?phone=+917012874039",
+                      "https://api.whatsapp.com/send?phone=917012874039",
                       "_blank"
                     )
                   }

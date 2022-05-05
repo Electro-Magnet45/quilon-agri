@@ -7,11 +7,9 @@ import Header from "./components/Header";
 import Home from "./screens/Home";
 import About from "./screens/About";
 import Contact from "./screens/Contact";
-import PopUp from "./components/PopUp";
 
 function App() {
   const [items, setItems] = useState();
-  const [popUp, setPopUp] = useState({ visible: false });
 
   const fetchItems = async () => {
     const items = await fetch(process.env.REACT_APP_SERVER_URL + "/get_items", {
@@ -29,9 +27,8 @@ function App() {
   return (
     <div className="app">
       <Header />
-      {popUp.visible && <PopUp popUp={popUp} setPopUp={setPopUp} />}
       <Routes>
-        <Route path="/" element={<Home items={items} setPopUp={setPopUp} />} />
+        <Route path="/" element={<Home items={items} />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<ErrorPage />} />
