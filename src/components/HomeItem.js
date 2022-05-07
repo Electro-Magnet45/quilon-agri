@@ -8,12 +8,11 @@ const HomeItem = ({ item }) => {
   const [dropHidden, setDropHidden] = useState(true);
   const [selectedQ, setSelectedQ] = useState("200 gms");
 
-  const sendWhatsapp = () => {
+  const sendWhatsapp = () =>
     window.open(
       `https://api.whatsapp.com/send?phone=917012874039&text=Hello%20QUILON%20AGRI%20PRODUCTS!%0AI%20want%20to%20order%20${selectedQ}%20of%20${item.name}%0A👉%20https://quilon-agri.vercel.app`,
       "_blank"
     );
-  };
 
   return (
     <div className="homeItem">
@@ -27,7 +26,7 @@ const HomeItem = ({ item }) => {
         <div className="home-item_details">
           <div style={{ fontSize: 18, fontWeight: 500 }}>{item.name}</div>
           <div style={{ fontSize: 16, fontWeight: 500 }}>
-            ₹ {selectedQ === "200 gms" ? item.gms200 : item.gms500}
+            &#8377; {selectedQ === "200 gms" ? item.gms200 : item.gms500}
           </div>
         </div>
         <div
