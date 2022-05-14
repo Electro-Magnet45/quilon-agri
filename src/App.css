@@ -3,6 +3,7 @@
 .app {
   font-family: "Poppins", sans-serif;
   user-select: none;
+  --primary-color: #faa905;
 }
 .app a {
   text-decoration: none;

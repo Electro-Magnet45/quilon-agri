@@ -7,9 +7,13 @@ import Header from "./components/Header";
 import Home from "./screens/Home";
 import About from "./screens/About";
 import Contact from "./screens/Contact";
+import Toast from "./components/Toast";
+import Cart from "./screens/Cart";
 
 function App() {
   const [items, setItems] = useState();
+  const [toasts, setToasts] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
 
   const fetchItems = async () => {
     const items = await fetch(process.env.REACT_APP_SERVER_URL + "/get_items", {
@@ -26,11 +30,26 @@ function App() {
 
   return (
     <div className="app">
-      <Header />
+      <Header cartItems={cartItems} />
+      <Toast toasts={toasts} setToasts={setToasts} />
       <Routes>
-        <Route path="/" element={<Home items={items} />} />
+        <Route
+          path="/"
+          element={
+            <Home
+              items={items}
+              cartItems={cartItems}
+              setCartItems={setCartItems}
+              setToasts={setToasts}
+            />
+          }
+        />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route
+          path="/cart"
+          element={<Cart cartItems={cartItems} setCartItems={setCartItems} />}
+        />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </div>

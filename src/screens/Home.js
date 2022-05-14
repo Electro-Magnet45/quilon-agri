@@ -5,7 +5,7 @@ import HomeItem from "../components/HomeItem";
 import { useTitle } from "../constants";
 import { useNavigate } from "react-router-dom";
 
-const Home = ({ items, setPopUp }) => {
+const Home = ({ items, cartItems, setCartItems, setToasts }) => {
   const navigate = useNavigate();
   var timeout;
 
@@ -72,14 +72,19 @@ const Home = ({ items, setPopUp }) => {
         </div>
         <div className="home_items">
           {items &&
-            items.map((i) => (
-              <HomeItem
-                key={i.id}
-                item={i}
-                setPopUp={setPopUp}
-                data-animation-offset={i.id}
-              />
-            ))}
+            items.map((i) => {
+              const cartAdded = cartItems.filter((e) => e.name === i.name);
+              return (
+                <HomeItem
+                  key={i.id}
+                  item={i}
+                  setCartItems={setCartItems}
+                  addedCart={cartAdded.length !== 0 ? true : false}
+                  data-animation-offset={i.id}
+                  setToasts={setToasts}
+                />
+              );
+            })}
         </div>
       </div>
     </div>

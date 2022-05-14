@@ -1,18 +1,41 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./HomeItem.css";
 import chevron_down from "../assets/chevron_down.svg";
 import chevron_up from "../assets/chevron_up.svg";
-import whatsapp_icon from "../assets/whatsapp_icon.svg";
+import { ReactComponent as AddIcon } from "../assets/add_icon.svg";
 
-const HomeItem = ({ item }) => {
+const HomeItem = ({ item, setCartItems, addedCart, setToasts }) => {
   const [dropHidden, setDropHidden] = useState(true);
   const [selectedQ, setSelectedQ] = useState("200 gms");
 
-  const sendWhatsapp = () =>
-    window.open(
-      `https://api.whatsapp.com/send?phone=917012874039&text=Hello%20QUILON%20AGRI%20PRODUCTS!%0AI%20want%20to%20order%20${selectedQ}%20of%20${item.name}%0A👉%20https://quilon-agri.vercel.app`,
-      "_blank"
-    );
+  const addToCart = (e) => {
+    e.target.classList.toggle("remove");
+    var addCart = e.target.classList.contains("remove") ? true : false;
+    setToasts((prv) => [
+      addCart ? "Added to Cart" : "Removed from cart",
+      ...prv,
+    ]);
+    if (addCart)
+      return setCartItems((prev) => [
+        {
+          name: item.name,
+          selectedQ: selectedQ,
+          img: item.img,
+          gms200: item.gms200,
+          gms500: item.gms500,
+        },
+        ...prev,
+      ]);
+    setCartItems((prev) => prev.filter((e) => e.name !== item.name));
+  };
+
+  useEffect(() => {
+    if (addedCart) {
+      document
+        .querySelector(`.${item.name.replaceAll(/\s/g, "")}`)
+        .classList.add("remove");
+    }
+  }, []);
 
   return (
     <div className="homeItem">
@@ -29,32 +52,41 @@ const HomeItem = ({ item }) => {
             &#8377; {selectedQ === "200 gms" ? item.gms200 : item.gms500}
           </div>
         </div>
-        <div
-          className="home-item_priceDrop"
-          onClick={() => setDropHidden((prev) => !prev)}
-        >
+        <div className="home-item_priceDrop">
           {!dropHidden && (
             <div className="home-item_pricePick">
               <div
                 className={selectedQ === "200 gms" ? "active" : ""}
-                onClick={() => setSelectedQ("200 gms")}
+                onClick={() => {
+                  setSelectedQ("200 gms");
+                  setDropHidden(true);
+                }}
               >
                 200 gms
               </div>
               <div
                 className={selectedQ === "500 gms" ? "active" : ""}
-                onClick={() => setSelectedQ("500 gms")}
+                onClick={() => {
+                  setSelectedQ("500 gms");
+                  setDropHidden(true);
+                }}
               >
                 500 gms
               </div>
             </div>
           )}
-          <div className="home-item_dropMenu">
+          <div
+            className="home-item_dropMenu"
+            onClick={() => setDropHidden((prev) => !prev)}
+          >
             <div style={{ fontSize: 14 }}>{selectedQ}</div>
             <img src={dropHidden ? chevron_down : chevron_up} alt="" />
           </div>
-          <div>
-            <img src={whatsapp_icon} alt="" onClick={sendWhatsapp} />
+          <div
+            className={`home-item_cart ${item.name.replaceAll(/\s/g, "")}`}
+            onClick={addToCart}
+          >
+            <AddIcon />
           </div>
         </div>
       </div>
