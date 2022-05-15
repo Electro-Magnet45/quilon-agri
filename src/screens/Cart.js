@@ -131,22 +131,6 @@ const PopUp = ({ cartItems, setShowPopup, total }) => {
   const [number, setNumber] = useState(Number());
   const [address, setAddress] = useState("");
 
-  useEffect(() => {
-    const doBodyMenu = () => setShowPopup(false);
-    const doTableMenu = (e) => {
-      var evt = e ? e : window.event;
-      if (evt.stopPropagation) {
-        evt.stopPropagation();
-      } else {
-        evt.cancelBubble = true;
-      }
-      return false;
-    };
-
-    document.getElementById("popup").onclick = doBodyMenu;
-    document.getElementById("popup_container").onclick = doTableMenu;
-  }, []);
-
   const sendWhatsapp = () => {
     if (name.length === 0 || number.length === 0 || address.length === 0)
       return;
@@ -163,8 +147,8 @@ const PopUp = ({ cartItems, setShowPopup, total }) => {
   };
 
   return (
-    <div id="popup" className="popup">
-      <div id="popup_container" className="popup_container">
+    <div className="popup">
+      <div className="popup_container">
         <div
           style={{
             backgroundColor: "#faa905",
@@ -204,22 +188,40 @@ const PopUp = ({ cartItems, setShowPopup, total }) => {
               onChange={(e) => setAddress(e.target.value)}
             />
           </div>
-          <div
-            style={{
-              marginTop: 12,
-              width: "fit-content",
-              marginLeft: "auto",
-              marginRight: "auto",
-              textAlign: "center",
-              color: "#faa905",
-              padding: 12,
-              fontWeight: "bolder",
-              cursor: "pointer",
-              borderRadius: "14px",
-            }}
-            onClick={sendWhatsapp}
-          >
-            Continue
+          <div style={{ marginTop: 12, display: "flex" }}>
+            <div
+              style={{
+                width: "fit-content",
+                marginLeft: "auto",
+                marginRight: "auto",
+                textAlign: "center",
+                color: "#faa905",
+                padding: 12,
+                fontWeight: "bolder",
+                cursor: "pointer",
+                borderRadius: "14px",
+              }}
+              onClick={() => setShowPopup(false)}
+            >
+              Cancel
+            </div>
+            <div
+              style={{
+                width: "fit-content",
+                marginLeft: "auto",
+                marginRight: "auto",
+                textAlign: "center",
+                backgroundColor: "#faa905",
+                color: "white",
+                padding: 12,
+                fontWeight: "bolder",
+                cursor: "pointer",
+                borderRadius: "14px",
+              }}
+              onClick={sendWhatsapp}
+            >
+              Continue
+            </div>
           </div>
         </div>
       </div>

@@ -27,7 +27,7 @@
 }
 .cartItem_container div:last-child {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 .cartItem-cont_remove {
   margin-top: 0.5rem;
