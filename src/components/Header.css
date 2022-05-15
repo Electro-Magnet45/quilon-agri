@@ -44,7 +44,7 @@
 
 @media only screen and (max-width: 900px) {
   .header_container {
-    padding: 0 1rem;
+    padding: 0.5rem 1rem;
   }
   .header_container > a > img {
     height: 5rem;
@@ -53,7 +53,7 @@
 
 @media only screen and (max-width: 600px) {
   .header_container {
-    padding: 0 0.5rem;
+    padding: 0.5rem;
   }
   .header_container > a > img {
     height: 2rem;
