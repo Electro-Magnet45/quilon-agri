@@ -84,6 +84,9 @@
 .popup-cont_form textarea:focus {
   border-color: red;
 }
+.popup-cont_form p {
+  font-weight: bold;
+}
 
 @keyframes popup_anime {
   from {
