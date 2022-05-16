@@ -130,9 +130,15 @@ const PopUp = ({ cartItems, setShowPopup, total }) => {
   const [name, setName] = useState("");
   const [number, setNumber] = useState(Number());
   const [address, setAddress] = useState("");
+  const [pincode, setPincode] = useState("");
 
   const sendWhatsapp = () => {
-    if (name.length === 0 || number.length === 0 || address.length === 0)
+    if (
+      name.length === 0 ||
+      number.length === 0 ||
+      address.length === 0 ||
+      pincode.length == 0
+    )
       return;
     var text = "Hello%20QUILON%20AGRI%20PRODUCTS!%0AI%20want%20to%20order:%0A";
     cartItems.map((e) => (text = `${text}%0A${e.selectedQ} of ${e.name}`));
@@ -141,7 +147,7 @@ const PopUp = ({ cartItems, setShowPopup, total }) => {
       `https://api.whatsapp.com/send?phone=917012874039&text=${text.replaceAll(
         /\s/g,
         "%20"
-      )}%0A%0A Name: ${name}%0A Address: ${address}%0A Phone Number: ${number}%0A Total: *₹${total}*%0A👉%20https://quilon-agri.vercel.app`,
+      )}%0A%0A Name: ${name}%0A Address: ${address}%0A Pincode: ${pincode}%0A Phone Number: ${number}%0A Total: *₹${total}*%0A👉%20https://quilon-agri.vercel.app`,
       "_blank"
     );
   };
@@ -186,6 +192,15 @@ const PopUp = ({ cartItems, setShowPopup, total }) => {
               placeholder="Delivery Address"
               value={address}
               onChange={(e) => setAddress(e.target.value)}
+            />
+          </div>
+          <div>
+            <p>Pincode:</p>
+            <input
+              type="number"
+              placeholder="Pincode"
+              value={pincode}
+              onChange={(e) => setPincode(e.target.value)}
             />
           </div>
           <div style={{ marginTop: 12, display: "flex" }}>
